@@ -50,7 +50,6 @@ Chaque animal détecté dispose d'une fiche détaillée contenant :
 ### Analyses statistiques
 - Graphique en barres des top 5 prédictions
 - Vue détaillée de toutes les probabilités
-- Historique des prédictions
 
 ## 🧠 Technologie
 
@@ -74,27 +73,28 @@ Le modèle atteint une **précision de 90.67%** sur l'ensemble de test, avec des
 ## 🏗️ Structure du projet
 
 ```
-anidex/
-├── notebooks/                   # Jupyter notebooks de développement
-│   ├── 01_data_exploration.ipynb
-│   ├── 02_preprocessing.ipynb
-│   └── 03_model_training.ipynb
-├── models/                      # Modèles entraînés
-│   └── mobilenetv2_animal_classifier.h5
-├── data/                        # Datasets
-│   ├── raw/                     # Données brutes Kaggle
-│   └── processed/               # Données préprocessées
-├── src/                         # Code source
-│   ├── preprocessing.py         # Fonctions de prétraitement
-│   ├── model.py                # Architecture et entraînement
-│   └── utils.py                # Utilitaires
-├── streamlit_app/              # Application Streamlit
-│   ├── app.py                  # Application principale
-│   ├── pages/                  # Pages additionnelles
-│   └── assets/                 # Ressources statiques
-├── feedback/                   # Données de feedback utilisateur
-│   └── user_feedback.csv
-└── README.md
+Anidex/
+├── data/                        # Dataset organisé par classes
+│   ├── butterfly/               # Images de papillons
+│   ├── cat/                     # Images de chats
+│   ├── chicken/                 # Images de poulets
+│   ├── cow/                     # Images de vaches
+│   ├── dog/                     # Images de chiens
+│   ├── elephant/                # Images d'éléphants
+│   ├── horse/                   # Images de chevaux
+│   ├── sheep/                   # Images de moutons
+│   ├── spider/                  # Images d'araignées
+│   └── squirrel/                # Images d'écureuils
+├── models/                      # Notebooks et modèles ML
+│   └── MobileNetV2.ipynb        # Notebook d'entraînement du modèle
+├── src/                         # Code source principal
+│   ├── dashboard.py             # Application Streamlit principale
+│   ├── data_preprocessing.ipynb # Notebook de prétraitement
+│   └── model.py                 # Fonctions du modèle ML
+├── model_classification.h5      # Modèle entraîné sauvegardé
+├── requirements.txt             # Dépendances Python
+├── .gitignore                   # Fichiers à ignorer par Git
+└── README.md                    # Documentation du projet
 ```
 
 ## 📖 Utilisation
@@ -135,13 +135,12 @@ Les contributions sont les bienvenues ! Le système de feedback intégré permet
 
 ### Versions futures
 - 🔄 **v1.1** : Géolocalisation des animaux
-- 🔄 **v1.2** : Extension à 20+ espèces
-- 🔄 **v1.3** : API REST pour intégrations
+- 🔄 **v1.2** : API REST pour intégrations
 - 🔄 **v2.0** : Classification multi-animaux par image
 
 ## 👨‍💻 Auteur
 
-**Théo CREPIN** - Développeur Data Science  
+**Théo CREPIN** - Etudiant EPITECH Promo 2029  
 *Projet réalisé dans le cadre du développement de compétences en machine learning*
 
 ## 📄 Licence
