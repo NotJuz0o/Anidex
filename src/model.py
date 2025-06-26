@@ -10,7 +10,7 @@ import tensorflow as tf
 from PIL import Image
 
 class ImageClassifier:
-    def __init__(self, model_path="model_classification.h5"):
+    def __init__(self, model_path="models/model_classification.h5"):
         self.model_path = model_path
         self.model = None
         self.class_names = [
