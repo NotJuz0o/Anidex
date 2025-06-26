@@ -140,7 +140,7 @@ Les contributions sont les bienvenues ! Le système de feedback intégré permet
 
 ## 👨‍💻 Auteur
 
-**Théo CREPIN** - Etudiant EPITECH Promo 2029  
+**NotJuz0o** - Etudiant EPITECH Promo 2029  
 *Projet réalisé dans le cadre du développement de compétences en machine learning*
 
 ## 📄 Licence
