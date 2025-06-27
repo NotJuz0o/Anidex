@@ -54,6 +54,13 @@ st.markdown("""
         border-radius: 8px;
         border-left: 4px solid #3498db;
     }
+    .warning-box {
+        background: rgba(255, 193, 7, 0.1);
+        border: 1px solid #ffc107;
+        border-radius: 8px;
+        padding: 15px;
+        margin: 10px 0;
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -198,7 +205,7 @@ def create_simple_chart(probabilities):
 
 def save_image_to_dataset(image, predicted_class, original_filename):
     try:
-        dataset_path = "../data"
+        dataset_path = "data/"
         class_folder = os.path.join(dataset_path, predicted_class)
         
         if not os.path.exists(class_folder):
@@ -297,6 +304,8 @@ def main():
                         st.session_state.result = result
                         st.session_state.image = image
                         st.session_state.filename = uploaded_file.name
+                        st.session_state.feedback_given = False
+                        st.session_state.show_correction = False
                         
                         st.rerun()
                         
@@ -317,49 +326,69 @@ def main():
             st.metric("🎯 Confiance", f"{confidence:.1%}")
             
             st.progress(confidence)
-            
-            st.markdown("---")
-            st.subheader("📝 Cette prédiction est-elle correcte?")
-            
-            col_yes, col_no = st.columns(2)
-            
-            with col_yes:
-                if st.button("✅ Oui, c'est correct!", type="primary", use_container_width=True):
-                    save_image_to_dataset(
-                        st.session_state.image, 
-                        predicted_class, 
-                        st.session_state.filename
-                    )
-                    update_dataset_pickle()
-            
-            with col_no:
-                if st.button("❌ Non, c'est faux", use_container_width=True):
-                    st.session_state.show_correction = True
+            if confidence < 0.95:
+                st.markdown(f"""
+                <div class="warning-box">
+                    <h4 style="color: #856404; margin: 0 0 10px 0;">⚠️ Attention - Confiance faible</h4>
+                    <p style="color: #856404; margin: 0;">
+                        La confiance est de {confidence:.1%}, ce qui est en dessous de 95%. 
+                        Cette prédiction pourrait être incorrecte. Veuillez vérifier attentivement 
+                        le résultat et nous faire part de votre feedback pour améliorer le modèle.
+                    </p>
+                </div>
+                """, unsafe_allow_html=True)
+            if not hasattr(st.session_state, 'feedback_given') or not st.session_state.feedback_given:
+                st.markdown("---")
+                st.subheader("📝 Cette prédiction est-elle correcte?")
                 
-                if hasattr(st.session_state, 'show_correction') and st.session_state.show_correction:
-                    st.markdown("**Quelle est la vraie classe?**")
-                    correct_class = st.selectbox(
-                        "Choisissez:",
-                        options=list(ANIMAL_DATA.keys()),
-                        format_func=lambda x: f"{ANIMAL_DATA[x]['emoji']} {ANIMAL_DATA[x]['name']}",
-                        key="correct_class_selector"
-                    )
-                    
-                    if st.button("💾 Sauvegarder avec la bonne classe"):
+                col_yes, col_no = st.columns(2)
+                
+                with col_yes:
+                    if st.button("✅ Oui, c'est correct!", type="primary", use_container_width=True):
                         save_image_to_dataset(
                             st.session_state.image, 
-                            correct_class, 
-                                       st.session_state.filename
+                            predicted_class, 
+                            st.session_state.filename
+                        )
+                        update_dataset_pickle()
+                        st.session_state.feedback_given = True
+                        st.success("✅ Merci pour votre feedback ! Image ajoutée au dataset.")
+                        st.rerun()
+                
+                with col_no:
+                    if st.button("❌ Non, c'est faux", use_container_width=True):
+                        st.session_state.show_correction = True
+                    
+                    if hasattr(st.session_state, 'show_correction') and st.session_state.show_correction:
+                        st.markdown("**Quelle est la vraie classe?**")
+                        correct_class = st.selectbox(
+                            "Choisissez:",
+                            options=list(ANIMAL_DATA.keys()),
+                            format_func=lambda x: f"{ANIMAL_DATA[x]['emoji']} {ANIMAL_DATA[x]['name']}",
+                            key="correct_class_selector"
                         )
                         
-                        log_file = "../data/user_feedback.log"
-                        try:
-                            with open(log_file, "a") as f:
-                                f.write(f"{datetime.now()}: CORRECTION - Predicted: {predicted_class}, Actual: {correct_class}\n")
-                        except:
-                            pass
-                        
-                        st.session_state.show_correction = False
+                        if st.button("💾 Sauvegarder avec la bonne classe"):
+                            save_image_to_dataset(
+                                st.session_state.image, 
+                                correct_class, 
+                                           st.session_state.filename
+                            )
+                            
+                            log_file = "../data/user_feedback.log"
+                            try:
+                                with open(log_file, "a") as f:
+                                    f.write(f"{datetime.now()}: CORRECTION - Predicted: {predicted_class}, Actual: {correct_class}\n")
+                            except:
+                                pass
+                            
+                            st.session_state.feedback_given = True
+                            st.session_state.show_correction = False
+                            st.success(f"✅ Merci pour la correction ! Image sauvegardée comme {ANIMAL_DATA[correct_class]['name']}.")
+                            st.rerun()
+            else:
+                st.markdown("---")
+                st.info("✅ Merci pour votre feedback ! Vous avez déjà évalué cette prédiction.")
             
             st.markdown("---")
             st.header(f"📚 Fiche Pokédex - {ANIMAL_DATA[predicted_class]['name']}")
