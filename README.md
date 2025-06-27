@@ -68,7 +68,7 @@ Chaque animal détecté dispose d'une fiche détaillée contenant :
 
 ## 📊 Performances
 
-Le modèle atteint une **précision de 90.67%** sur l'ensemble de test, avec des prédictions particulièrement fiables pour les grands mammifères comme les éléphants (>99% de confiance typique).
+Le modèle atteint une **précision de 92.3%** sur l'ensemble de test, avec des prédictions particulièrement fiables pour les grands mammifères comme les éléphants (>99% de confiance typique).
 
 ## 🏗️ Structure du projet
 
@@ -140,7 +140,7 @@ Les contributions sont les bienvenues ! Le système de feedback intégré permet
 
 ## 👨‍💻 Auteur
 
-**Théo CREPIN** - Etudiant EPITECH Promo 2029  
+**NotJuz0o** - Etudiant EPITECH Promo 2029  
 *Projet réalisé dans le cadre du développement de compétences en machine learning*
 
 ## 📄 Licence
