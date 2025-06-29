@@ -2,7 +2,7 @@ VENV_NAME = .venv
 PYTHON = $(VENV_NAME)/bin/python
 PIP = $(VENV_NAME)/bin/pip
 
-.PHONY: help install dataset model run clean
+.PHONY: help install dataset model run clean fclean
 
 help:
 	@echo "Available commands:"
@@ -41,9 +41,18 @@ run: $(VENV_NAME)
 	$(PYTHON) -m streamlit run src/dashboard.py
 
 clean:
+	@echo "Cleaning cache and generated files..."
+	rm -rf src/__pycache__
+	rm -rf models/__pycache__
+	rm -rf */__pycache__
+	
+fclean: clean
 	@echo "Removing virtual environment..."
 	rm -rf $(VENV_NAME)
-	@echo "Clean complete!"
+	rm -f models/model_classification.h5
+	rm -f data/dataset.pkl
+	@echo "Full clean complete!"
+
 
 $(VENV_NAME):
 	@if [ ! -d "$(VENV_NAME)" ]; then \
