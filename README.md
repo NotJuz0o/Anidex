@@ -114,7 +114,107 @@ Anidex/
 
 ## 🛠️ Installation
 
-*[Cette section sera complétée ultérieurement]*
+### Prérequis
+
+- **Système d'exploitation** : Ubuntu 18.04+ ou Debian 10+
+- **Make** : Pour automatiser l'installation
+- **Accès sudo** : Pour installer Python 3.11
+- **Git** : Pour cloner le projet
+
+### Installation rapide
+
+1. **Cloner le repository**
+   ```bash
+   git clone https://github.com/NotJuz0o/Anidex.git
+   cd Anidex
+   ```
+
+2. **Installation automatique**
+   ```bash
+   # Voir les commandes disponibles
+   make help
+   
+   # Installation complète (Python 3.11 + dépendances + environnement virtuel)
+   make install
+   ```
+
+3. **Lancer l'application**
+   ```bash
+   make run
+   ```
+
+4. **Accéder à l'interface**
+   
+   Ouvrez votre navigateur et allez sur : `http://localhost:8501`
+
+### Installation manuelle (optionnelle)
+
+Si vous préférez installer manuellement :
+
+```bash
+# 1. Installer Python 3.11
+sudo apt update
+sudo apt install -y python3.11 python3.11-venv python3.11-dev python3.11-distutils
+
+# 2. Créer l'environnement virtuel
+python3.11 -m venv .venv
+source .venv/bin/activate
+
+# 3. Installer les dépendances
+pip install --upgrade pip
+pip install -r requirements.txt
+
+# 4. Lancer l'application
+python -m streamlit run src/dashboard.py
+```
+
+### Commandes Makefile disponibles
+
+```bash
+make help        # Afficher toutes les commandes disponibles
+make install     # Installation complète du projet
+make dataset     # Exécuter le prétraitement des données
+make model       # Entraîner le modèle MobileNetV2
+make run         # Lancer l'application Streamlit
+make clean       # Nettoyer les caches Python uniquement
+make fclean      # Nettoyage complet (venv + cache + modèles générés)
+```
+
+### Problèmes courants
+
+**Erreur de permissions :**
+```bash
+# S'assurer que make a les permissions
+chmod +x Makefile
+```
+
+**Port 8501 déjà utilisé :**
+```bash
+# Lancer sur un autre port
+.venv/bin/python -m streamlit run src/dashboard.py --server.port 8502
+```
+
+### Vérification de l'installation
+
+Une fois l'installation terminée, vous devriez voir :
+- ✅ Interface Streamlit accessible sur `http://localhost:8501`
+- ✅ Upload d'image fonctionnel
+- ✅ Prédictions en temps réel
+- ✅ Fiches Pokédex complètes
+
+### Désinstallation
+
+Pour supprimer complètement le projet :
+```bash
+make fclean         # Nettoyage complet (recommandé)
+cd ..
+rm -rf Anidex       # Supprimer le dossier du projet
+```
+
+**Ou nettoyage partiel :**
+```bash
+make clean          # Garder l'environnement, supprimer juste les caches
+```
 
 ## 🤝 Contribution
 

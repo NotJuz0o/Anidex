@@ -9,8 +9,8 @@ help:
 	@echo "  install - Create Python 3.11 environment and install dependencies"
 	@echo "  dataset - Convert and execute data preprocessing notebook"
 	@echo "  model - Convert and execute MobileNetV2 model notebook"
-	@echo "  run - Launch Streamlit dashboard"
-	@echo "  clean - Remove virtual environment"
+	@echo "  clean - Remove cache files only"
+	@echo "  fclean - Full clean (remove everything)"
 
 install:
 	@echo "Installing Python 3.11 and dependencies..."
