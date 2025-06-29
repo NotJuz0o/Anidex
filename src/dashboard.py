@@ -430,7 +430,7 @@ def main():
     
     with st.sidebar:
         st.header("ℹ️ Information")
-        st.info("🎯 **Accuracy**: 92.2%")
+        st.info("🎯 **Accuracy**: 91.53%")
         st.info("🐾 **Classes**: 10 animals")
         
         st.markdown("### 🏆 Detectable animals")
