@@ -22,7 +22,7 @@ except ImportError:
     MODEL_AVAILABLE = False
 
 st.set_page_config(
-    page_title="🐾 Anidex - Pokédex Animalier",
+    page_title="🐾 Anidex - Animal Pokédex",
     page_icon="🐾",
     layout="wide"
 )
@@ -67,103 +67,103 @@ st.markdown("""
 ANIMAL_DATA = {
     'butterfly': {
         'emoji': '🦋', 
-        'name': 'Papillon',
-        'habitat': 'Jardins, prairies, forêts',
-        'taille': '2-10 cm d\'envergure',
-        'poids': '0.1-0.5 grammes',
-        'regime': 'Nectar des fleurs',
-        'caracteristiques': 'Métamorphose complète, vol délicat',
-        'fait_interessant': 'Peut voir les couleurs ultraviolettes invisibles à l\'œil humain'
+        'name': 'Butterfly',
+        'habitat': 'Gardens, meadows, forests',
+        'taille': '2-10 cm wingspan',
+        'poids': '0.1-0.5 grams',
+        'regime': 'Flower nectar',
+        'caracteristiques': 'Complete metamorphosis, delicate flight',
+        'fait_interessant': 'Can see ultraviolet colors invisible to the human eye'
     },
     'cat': {
         'emoji': '🐱', 
-        'name': 'Chat',
-        'habitat': 'Domestique, urbain et rural',
-        'taille': '23-25 cm (hauteur)',
+        'name': 'Cat',
+        'habitat': 'Domestic, urban and rural',
+        'taille': '23-25 cm (height)',
         'poids': '3-7 kg',
-        'regime': 'Carnivore strict',
-        'caracteristiques': 'Vision nocturne excellente, agilité',
-        'fait_interessant': 'Ronronne à une fréquence qui favorise la guérison osseuse'
+        'regime': 'Strict carnivore',
+        'caracteristiques': 'Excellent night vision, agility',
+        'fait_interessant': 'Purrs at a frequency that promotes bone healing'
     },
     'chicken': {
         'emoji': '🐔', 
-        'name': 'Poulet',
-        'habitat': 'Fermes, basses-cours',
+        'name': 'Chicken',
+        'habitat': 'Farms, chicken coops',
         'taille': '35-45 cm',
         'poids': '1.5-4 kg',
-        'regime': 'Omnivore (graines, insectes)',
-        'caracteristiques': 'Communication complexe, hiérarchie sociale',
-        'fait_interessant': 'Peut reconnaître plus de 100 visages différents'
+        'regime': 'Omnivore (seeds, insects)',
+        'caracteristiques': 'Complex communication, social hierarchy',
+        'fait_interessant': 'Can recognize more than 100 different faces'
     },
     'cow': {
         'emoji': '🐄', 
-        'name': 'Vache',
-        'habitat': 'Prairies, pâturages',
-        'taille': '120-150 cm (hauteur)',
+        'name': 'Cow',
+        'habitat': 'Meadows, pastures',
+        'taille': '120-150 cm (height)',
         'poids': '400-800 kg',
-        'regime': 'Herbivore ruminant',
-        'caracteristiques': 'Estomac à 4 compartiments, vie sociale',
-        'fait_interessant': 'Peut produire jusqu\'à 40 litres de lait par jour'
+        'regime': 'Ruminant herbivore',
+        'caracteristiques': '4-compartment stomach, social life',
+        'fait_interessant': 'Can produce up to 40 liters of milk per day'
     },
     'dog': {
         'emoji': '🐕', 
-        'name': 'Chien',
-        'habitat': 'Domestique, tous environnements',
-        'taille': '15-90 cm (selon race)',
-        'poids': '1-90 kg (selon race)',
-        'regime': 'Omnivore à tendance carnivore',
-        'caracteristiques': 'Loyauté, intelligence, odorat développé',
-        'fait_interessant': 'Peut détecter certaines maladies grâce à son odorat'
+        'name': 'Dog',
+        'habitat': 'Domestic, all environments',
+        'taille': '15-90 cm (depending on breed)',
+        'poids': '1-90 kg (depending on breed)',
+        'regime': 'Omnivore with carnivorous tendency',
+        'caracteristiques': 'Loyalty, intelligence, developed sense of smell',
+        'fait_interessant': 'Can detect certain diseases through smell'
     },
     'elephant': {
         'emoji': '🐘', 
-        'name': 'Éléphant',
-        'habitat': 'Savanes, forêts africaines/asiatiques',
-        'taille': '2.5-4 m (hauteur)',
+        'name': 'Elephant',
+        'habitat': 'African/Asian savannas, forests',
+        'taille': '2.5-4 m (height)',
         'poids': '4000-7000 kg',
-        'regime': 'Herbivore (300 kg de végétaux/jour)',
-        'caracteristiques': 'Mémoire exceptionnelle, trompe polyvalente',
-        'fait_interessant': 'Peut entendre des infrasons à des kilomètres de distance'
+        'regime': 'Herbivore (300 kg of vegetation/day)',
+        'caracteristiques': 'Exceptional memory, versatile trunk',
+        'fait_interessant': 'Can hear infrasounds from kilometers away'
     },
     'horse': {
         'emoji': '🐴', 
-        'name': 'Cheval',
-        'habitat': 'Prairies, écuries, ranch',
-        'taille': '140-180 cm (hauteur au garrot)',
+        'name': 'Horse',
+        'habitat': 'Meadows, stables, ranches',
+        'taille': '140-180 cm (height at withers)',
         'poids': '380-900 kg',
-        'regime': 'Herbivore (herbe, foin, avoine)',
-        'caracteristiques': 'Vitesse, endurance, vision panoramique',
-        'fait_interessant': 'Peut dormir debout grâce à un système de verrouillage des pattes'
+        'regime': 'Herbivore (grass, hay, oats)',
+        'caracteristiques': 'Speed, endurance, panoramic vision',
+        'fait_interessant': 'Can sleep standing up thanks to a leg-locking system'
     },
     'sheep': {
         'emoji': '🐑', 
-        'name': 'Mouton',
-        'habitat': 'Pâturages, collines, montagnes',
-        'taille': '60-100 cm (hauteur)',
+        'name': 'Sheep',
+        'habitat': 'Pastures, hills, mountains',
+        'taille': '60-100 cm (height)',
         'poids': '45-160 kg',
-        'regime': 'Herbivore ruminant',
-        'caracteristiques': 'Laine isolante, instinct grégaire',
-        'fait_interessant': 'Peut reconnaître jusqu\'à 50 visages différents pendant 2 ans'
+        'regime': 'Ruminant herbivore',
+        'caracteristiques': 'Insulating wool, herd instinct',
+        'fait_interessant': 'Can recognize up to 50 different faces for 2 years'
     },
     'spider': {
         'emoji': '🕷️', 
-        'name': 'Araignée',
-        'habitat': 'Partout (8 pattes = 8 habitats)',
-        'taille': '0.5-30 cm (selon espèce)',
-        'poids': '0.1g-175g (selon espèce)',
-        'regime': 'Carnivore (insectes, petits animaux)',
-        'caracteristiques': 'Toile de soie, 8 yeux, venin',
-        'fait_interessant': 'La soie d\'araignée est plus résistante que l\'acier à poids égal'
+        'name': 'Spider',
+        'habitat': 'Everywhere (8 legs = 8 habitats)',
+        'taille': '0.5-30 cm (depending on species)',
+        'poids': '0.1g-175g (depending on species)',
+        'regime': 'Carnivore (insects, small animals)',
+        'caracteristiques': 'Silk web, 8 eyes, venom',
+        'fait_interessant': 'Spider silk is stronger than steel at equal weight'
     },
     'squirrel': {
         'emoji': '🐿️', 
-        'name': 'Écureuil',
-        'habitat': 'Forêts, parcs, jardins urbains',
-        'taille': '15-25 cm + queue 15-25 cm',
-        'poids': '300-700 grammes',
-        'regime': 'Omnivore (noix, graines, fruits)',
-        'caracteristiques': 'Agilité acrobatique, mémoire spatiale',
-        'fait_interessant': 'Cache jusqu\'à 10 000 noix par saison et se souvient de 80% des cachettes'
+        'name': 'Squirrel',
+        'habitat': 'Forests, parks, urban gardens',
+        'taille': '15-25 cm + tail 15-25 cm',
+        'poids': '300-700 grams',
+        'regime': 'Omnivore (nuts, seeds, fruits)',
+        'caracteristiques': 'Acrobatic agility, spatial memory',
+        'fait_interessant': 'Hides up to 10,000 nuts per season and remembers 80% of hiding spots'
     }
 }
 
@@ -172,7 +172,7 @@ def load_classifier():
     try:
         return ImageClassifier()
     except Exception as e:
-        st.error(f"Erreur modèle: {e}")
+        st.error(f"Model error: {e}")
         return None
 
 def create_simple_chart(probabilities):
@@ -193,8 +193,8 @@ def create_simple_chart(probabilities):
               for cls in top_classes]
     ax.set_yticks(range(len(top_classes)))
     ax.set_yticklabels(labels)
-    ax.set_xlabel('Probabilité (%)')
-    ax.set_title('🎯 Top 5 Prédictions')
+    ax.set_xlabel('Probability (%)')
+    ax.set_title('🎯 Top 5 Predictions')
     
     for i, prob in enumerate(top_probs):
         ax.text(prob + 1, i, f'{prob:.1f}%', va='center')
@@ -252,46 +252,46 @@ def display_pokedex_info(predicted_class):
     
     with col1:
         st.info(f"🏠 **Habitat**\n{animal_info['habitat']}")
-        st.info(f"⚖️ **Poids**\n{animal_info['poids']}")
-        st.info(f"⭐ **Caractéristiques**\n{animal_info['caracteristiques']}")
+        st.info(f"⚖️ **Weight**\n{animal_info['poids']}")
+        st.info(f"⭐ **Characteristics**\n{animal_info['caracteristiques']}")
     
     with col2:
-        st.info(f"📏 **Taille**\n{animal_info['taille']}")
-        st.info(f"🍽️ **Régime**\n{animal_info['regime']}")
-        st.info(f"💡 **Fait intéressant**\n{animal_info['fait_interessant']}")
+        st.info(f"📏 **Size**\n{animal_info['taille']}")
+        st.info(f"🍽️ **Diet**\n{animal_info['regime']}")
+        st.info(f"💡 **Interesting Fact**\n{animal_info['fait_interessant']}")
 
 def main():
     st.markdown('<h1 class="main-title">🐾 ANIDEX</h1>', unsafe_allow_html=True)
-    st.markdown('<p class="subtitle">Pokédex Animalier Simple</p>', unsafe_allow_html=True)
+    st.markdown('<p class="subtitle">Animal Pokédex</p>', unsafe_allow_html=True)
     
     if not MODEL_AVAILABLE:
-        st.error("❌ Modèle non trouvé!")
+        st.error("❌ Model not found!")
         return
     
     classifier = load_classifier()
     if classifier is None:
-        st.error("❌ Impossible de charger le modèle.")
+        st.error("❌ Unable to load model.")
         return
     
-    st.success("✅ Modèle prêt!")
+    st.success("✅ Model ready!")
     
     col1, col2 = st.columns([1, 1])
     
     with col1:
-        st.header("📤 Votre Image")
+        st.header("📤 Your Image")
         
         uploaded_file = st.file_uploader(
-            "Choisissez une image",
+            "Choose an image",
             type=['png', 'jpg', 'jpeg'],
             help="Formats: PNG, JPG, JPEG"
         )
         
         if uploaded_file is not None:
             image = Image.open(uploaded_file)
-            st.image(image, caption="Image téléchargée", use_container_width=True)
+            st.image(image, caption="Uploaded image", use_container_width=True)
             
-            if st.button("🔍 Analyser", type="primary", use_container_width=True):
-                with st.spinner("🧠 Analyse en cours..."):
+            if st.button("🔍 Analyze", type="primary", use_container_width=True):
+                with st.spinner("🧠 Analysis in progress..."):
                     try:
                         temp_path = f"temp_{uploaded_file.name}"
                         with open(temp_path, "wb") as f:
@@ -310,41 +310,41 @@ def main():
                         st.rerun()
                         
                     except Exception as e:
-                        st.error(f"❌ Erreur: {e}")
+                        st.error(f"❌ Error: {e}")
     
     with col2:
-        st.header("🎯 Résultat")
+        st.header("🎯 Result")
         
         if hasattr(st.session_state, 'result') and st.session_state.result:
             result = st.session_state.result
             predicted_class = result['predicted_class']
             confidence = result['confidence']
             
-            animal = ANIMAL_DATA.get(predicted_class, {'emoji': '❓', 'name': 'Inconnu'})
+            animal = ANIMAL_DATA.get(predicted_class, {'emoji': '❓', 'name': 'Unknown'})
             
             st.success(f"**{animal['emoji']} {animal['name'].upper()}**")
-            st.metric("🎯 Confiance", f"{confidence:.1%}")
+            st.metric("🎯 Confidence", f"{confidence:.1%}")
             
             st.progress(confidence)
             if confidence < 0.95:
                 st.markdown(f"""
                 <div class="warning-box">
-                    <h4 style="color: #856404; margin: 0 0 10px 0;">⚠️ Attention - Confiance faible</h4>
+                    <h4 style="color: #856404; margin: 0 0 10px 0;">⚠️ Warning - Low Confidence</h4>
                     <p style="color: #856404; margin: 0;">
-                        La confiance est de {confidence:.1%}, ce qui est en dessous de 95%. 
-                        Cette prédiction pourrait être incorrecte. Veuillez vérifier attentivement 
-                        le résultat et nous faire part de votre feedback pour améliorer le modèle.
+                        The confidence is {confidence:.1%}, which is below 95%. 
+                        This prediction might be incorrect. Please carefully verify 
+                        the result and provide your feedback to improve the model.
                     </p>
                 </div>
                 """, unsafe_allow_html=True)
             if not hasattr(st.session_state, 'feedback_given') or not st.session_state.feedback_given:
                 st.markdown("---")
-                st.subheader("📝 Cette prédiction est-elle correcte?")
+                st.subheader("📝 Is this prediction correct?")
                 
                 col_yes, col_no = st.columns(2)
                 
                 with col_yes:
-                    if st.button("✅ Oui, c'est correct!", type="primary", use_container_width=True):
+                    if st.button("✅ Yes, it's correct!", type="primary", use_container_width=True):
                         save_image_to_dataset(
                             st.session_state.image, 
                             predicted_class, 
@@ -352,23 +352,23 @@ def main():
                         )
                         update_dataset_pickle()
                         st.session_state.feedback_given = True
-                        st.success("✅ Merci pour votre feedback ! Image ajoutée au dataset.")
+                        st.success("✅ Thank you for your feedback! Image added to dataset.")
                         st.rerun()
                 
                 with col_no:
-                    if st.button("❌ Non, c'est faux", use_container_width=True):
+                    if st.button("❌ No, it's wrong", use_container_width=True):
                         st.session_state.show_correction = True
                     
                     if hasattr(st.session_state, 'show_correction') and st.session_state.show_correction:
-                        st.markdown("**Quelle est la vraie classe?**")
+                        st.markdown("**What is the correct class?**")
                         correct_class = st.selectbox(
-                            "Choisissez:",
+                            "Choose:",
                             options=list(ANIMAL_DATA.keys()),
                             format_func=lambda x: f"{ANIMAL_DATA[x]['emoji']} {ANIMAL_DATA[x]['name']}",
                             key="correct_class_selector"
                         )
                         
-                        if st.button("💾 Sauvegarder avec la bonne classe"):
+                        if st.button("💾 Save with correct class"):
                             save_image_to_dataset(
                                 st.session_state.image, 
                                 correct_class, 
@@ -384,72 +384,72 @@ def main():
                             
                             st.session_state.feedback_given = True
                             st.session_state.show_correction = False
-                            st.success(f"✅ Merci pour la correction ! Image sauvegardée comme {ANIMAL_DATA[correct_class]['name']}.")
+                            st.success(f"✅ Thank you for the correction! Image saved as {ANIMAL_DATA[correct_class]['name']}.")
                             st.rerun()
             else:
                 st.markdown("---")
-                st.info("✅ Merci pour votre feedback ! Vous avez déjà évalué cette prédiction.")
+                st.info("✅ Thank you for your feedback! Image added to dataset.")
             
             st.markdown("---")
-            st.header(f"📚 Fiche Pokédex - {ANIMAL_DATA[predicted_class]['name']}")
+            st.header(f"📚 Pokédex Card - {ANIMAL_DATA[predicted_class]['name']}")
             display_pokedex_info(predicted_class)
         
         else:
-            st.info("👆 Téléchargez une image pour commencer!")
+            st.info("👆 Upload an image to get started!")
     
     if hasattr(st.session_state, 'result') and st.session_state.result:
         st.markdown("---")
-        st.header("📊 Détail des Probabilités")
+        st.header("📊 Probability Details")
         
         fig = create_simple_chart(st.session_state.result['probabilities'])
         st.pyplot(fig)
         plt.close(fig)
         
-        st.subheader("📋 Toutes les probabilités")
+        st.subheader("📋 All probabilities")
         
         prob_data = []
         for class_name, prob in st.session_state.result['probabilities'].items():
             animal = ANIMAL_DATA[class_name]
             prob_data.append({
                 'Animal': f"{animal['emoji']} {animal['name']}",
-                'Probabilité': f"{prob:.2%}"
+                'Probability': f"{prob:.2%}"
             })
         
-        prob_data.sort(key=lambda x: float(x['Probabilité'].strip('%')), reverse=True)
+        prob_data.sort(key=lambda x: float(x['Probability'].strip('%')), reverse=True)
         
         cols = st.columns(2)
         mid = len(prob_data) // 2
         
         with cols[0]:
             for item in prob_data[:mid]:
-                st.write(f"{item['Animal']}: **{item['Probabilité']}**")
+                st.write(f"{item['Animal']}: **{item['Probability']}**")
         
         with cols[1]:
             for item in prob_data[mid:]:
-                st.write(f"{item['Animal']}: **{item['Probabilité']}**")
+                st.write(f"{item['Animal']}: **{item['Probability']}**")
     
     with st.sidebar:
-        st.header("ℹ️ Informations")
-        st.info("🎯 **Précision**: 92.2%")
-        st.info("🐾 **Classes**: 10 animaux")
+        st.header("ℹ️ Information")
+        st.info("🎯 **Accuracy**: 92.2%")
+        st.info("🐾 **Classes**: 10 animals")
         
-        st.markdown("### 🏆 Animaux détectables")
+        st.markdown("### 🏆 Detectable animals")
         for class_name, data in ANIMAL_DATA.items():
             st.write(f"{data['emoji']} {data['name']}")
         
         st.markdown("---")
-        st.markdown("### 📈 Amélioration continue")
+        st.markdown("### 📈 Continuous improvement")
         st.markdown("""
-        Vos feedbacks aident à améliorer le modèle:
-        - ✅ **Prédiction correcte** → Image ajoutée au dataset
-        - ❌ **Prédiction incorrecte** → Correction enregistrée
-        - 🔄 **Futur entraînement** → Modèle plus précis
+        Your feedback helps improve the model:
+        - ✅ **Correct prediction** → Image added to dataset
+        - ❌ **Incorrect prediction** → Correction recorded
+        - 🔄 **Future training** → More accurate model
         """)
     
     st.markdown("---")
     st.markdown(
         "<div style='text-align: center; color: #666;'>"
-        "🐾 Anidex - Dashboard Simple avec Feedback Utilisateur"
+        "🐾 Anidex - Simple Dashboard with User Feedback"
         "</div>", 
         unsafe_allow_html=True
     )
